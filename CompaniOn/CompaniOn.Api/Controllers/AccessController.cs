@@ -1,0 +1,47 @@
+﻿using Azure;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace CompaniOn.Api.Controllers
+{
+    public class AccessController : BaseController
+    {
+        private readonly IAccessManager _accessManager;
+
+        public AccessController(IAccessManager accessManager, ILogger<AccessController> logger) : base(logger)
+        {
+            _accessManager = accessManager;
+        }
+
+        [HttpPost("SignIn")]
+        public async Task<IActionResult> SignIn([FromBody] AccessSignInModel model, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var response = await _accessManager.SignInAsync(model, cancellationToken);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e, "Problem when signing in user");
+                return BadRequest(e.Message);
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost("SignUp")]
+        public async Task<IActionResult> SignUp(AccessSignUpModel model, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                await _accessManager.SignUpAsync(model, cancellationToken);
+                return Ok("User registered successfully. Please proceed to login.");
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e, "Problem when signing up user");
+                return BadRequest(e.Message + " " + e?.InnerException);
+            }
+        }
+    }
+}

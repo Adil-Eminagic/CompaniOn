@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "392439953965",
+    "project_id": "companion-741ca",
+    "storage_bucket": "companion-741ca.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392439953965:android:2194bbb79a15f4771996a4",
+        "android_client_info": {
+          "package_name": "com.example.companion_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmVeWBxYMjspuqTNwnz0c3pqMPZGVdL_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

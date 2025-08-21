@@ -1,0 +1,6 @@
+@CompaniOn.Api_HostAddress = http://localhost:5208
+
+GET {{CompaniOn.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
